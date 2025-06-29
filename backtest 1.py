@@ -8,7 +8,6 @@ from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 import numpy as np
 import warnings
-import ast
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -68,9 +67,6 @@ def is_numeric_scalar(val):
     # Fast path for int/float/numpy numeric
     return isinstance(val, (int, float, np.integer, np.floating))
 
-def safe_add(val, x):
-    # Fast path for numeric scalar addition
-    return float(val) + x if is_numeric_scalar(val) else None
 
 def calculate_rsi(close_prices, window=14, use_ema=True):
     # Vectorized RSI calculation
